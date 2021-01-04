@@ -1,0 +1,42 @@
+A database automatically should give Ids to its entries 
+Ids should not be created manually
+POSTGRES should give unique Ids to each entry automatically,to do so we use BIGSERIAL 
+datatype on ids, BIGSERIAL is a kind of big integer so, whenever, there will be new entry
+it will increment it by 1. It also makes sure that each entry in the database is unique
+
+NOT NULL - to ensure that each column has not a null entry, each column should have value
+
+dotenv is the package to manage the environment variables
+
+normally an api sends the data back in json format
+
+### Express Middleware
+First the request comes to  the express middleware, there could be multiple middlewares
+, then the request finally goes to the route handlers. The route handlers execute the request.
+The request first processed in the middlewares. The middlewares transfer the request 
+to route handler via 'next' object. So it is necessary to pass the 'next' object
+in the initial middlewares so that the next object can transfer the request to 
+the next middlewares/route handlers.
+The middlewares should be before the routes/ route handlers and after the express 
+app initialization
+With the middleware we can send the response back to the user
+
+We will be using morgan middleware. Morgan is a logger middlware
+Morgan is a third party middleware
+Why are we using middleware? What problem are we trying to solve?
+So when we create the restaurant, we pass the data in the request body,
+but we should also know how to retrieve the data from the body and the way we do that
+is we use the built in middleware that comes with express which is called  express.json
+So the middleware 'express.json()', so when we send the request, it is going to take the 
+request body information and it is going to attach to the request object and it is going
+to attach it under the property called 'body'
+
+To connect node to postgres, use node-postgres library(node-postgres.com)
+// importing pg library, but we care about only pool so importing pool from pg
+const { Pool } = require("pg");
+// we are creating a new pool, this is actually what is going to connect to our databse 
+const pool = new Pool();
+// we are exporting the pool and the query object
+module.exports  = {
+    query : (text, params) => pool.query(text, params),
+};
