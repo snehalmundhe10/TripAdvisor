@@ -44,3 +44,7 @@ module.exports  = {
 we do async and await on route handlers because if we don't do that, the response will be
 a promise.
 Whenever you are using async await, you need to wrap it in try catch block
+
+You should not use template string in db.query because it will make you vulnerable to 
+sql injection attacks, so it is not recommended to use any kind of string interpolation
+or template literals within your query. Instead we can use the parameterized query.
