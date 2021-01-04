@@ -40,3 +40,7 @@ const pool = new Pool();
 module.exports  = {
     query : (text, params) => pool.query(text, params),
 };
+
+we do async and await on route handlers because if we don't do that, the response will be
+a promise.
+Whenever you are using async await, you need to wrap it in try catch block

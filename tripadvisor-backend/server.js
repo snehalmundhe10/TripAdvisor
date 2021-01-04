@@ -12,17 +12,24 @@ const app = express();
 app.use(express.json());
 
 
-
+// Get all restaurants
 app.get("/api/v1/restaurants", async (req,res) => {
-   const results = await db.query("select * from restaurants");
-    console.log(results);
-    res.status(200).json({
-        status: "success",
-        data: {
-            restaurants: ["punjab palace", "godavari"]
-        },
-    })
-})
+    try {
+        const results = await db.query("select * from restaurants");
+        console.log(results);
+        res.status(200).json({
+            status: "success",
+            results: results.rows.length,
+            data: {
+                restaurants: results.rows
+            },
+        });
+    }   
+    catch(err){
+            console.log(err);
+    } 
+});
+
 // the callback function is referred to as the route handler
 app.get("/api/v1/restaurants/:id", (req,res) => {
   console.log(req.params);
