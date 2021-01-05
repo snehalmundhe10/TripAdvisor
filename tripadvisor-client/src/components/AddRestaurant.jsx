@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import RestaurantFinder from "../apis/RestaurantFinder";
+import { RestaurantsContext } from '../context/RestaurantsContext';
 import "./AddRestaurant.css";
 
 const AddRestaurant = () => {
+    const {addRestaurants} = useContext(RestaurantsContext);
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
     const [priceRange, setPriceRange] = useState("Price Range");
-   const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
           const response =  await RestaurantFinder.post("/", {
@@ -14,7 +16,9 @@ const AddRestaurant = () => {
                 location: location,
                 price_range: priceRange
             });
+            addRestaurants(response.data.data.restaurant);
             console.log(response);
+
         }catch(err){
             
         }
