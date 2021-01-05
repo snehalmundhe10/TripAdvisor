@@ -7,7 +7,7 @@ const AddRestaurant = () => {
     const {addRestaurants} = useContext(RestaurantsContext);
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
-    const [priceRange, setPriceRange] = useState("Price Range");
+    const [priceRange, setPriceRange] = useState("Price");
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

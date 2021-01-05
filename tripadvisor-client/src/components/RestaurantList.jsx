@@ -1,11 +1,14 @@
-import React, { useEffect, useContext } from 'react'
-import RestaurantFinder from "../apis/RestaurantFinder"
-import { RestaurantsContext } from '../context/RestaurantsContext'
+import React, { useEffect, useContext} from 'react';
+import RestaurantFinder from "../apis/RestaurantFinder";
+import { RestaurantsContext } from '../context/RestaurantsContext';
+import {useHistory} from "react-router-dom";
 import "./RestaurantList.css";
 
 
 const RestaurantList = (props) => {
-  const {restaurants, setRestaurants} = useContext(RestaurantsContext)
+  const {restaurants, setRestaurants} = useContext(RestaurantsContext);
+  // represents history of the browser
+    let history = useHistory();
     useEffect(() => { 
         const fetchData = async () => {
             try {
@@ -22,11 +25,16 @@ const RestaurantList = (props) => {
             const response = await RestaurantFinder.delete(`/${id}`);
             setRestaurants(restaurants.filter(restaurant => {
                 return restaurant.id !== id
-            }))
+            }));
+            console.log(response);
 
         }catch(err){ console.log(err); }
 
     };
+    const handleUpdate = async (id) => {
+        history.push(`/restaurants/${id}/update`);
+       
+    }
     return (
         <div className="list-group">
             <table className="table table-hover table-striped">
@@ -48,7 +56,14 @@ const RestaurantList = (props) => {
                             <td className="align-middle">{restaurant.location}</td>
                             <td className="align-middle">{"$".repeat(restaurant.price_range)}</td>
                             <td className="align-middle">reviews</td>
-                            <td className="align-middle"><button className="btn btn-warning">Update</button></td>
+                            <td className="align-middle">
+                                <button
+                                onClick={() => handleUpdate(restaurant.id)} 
+                                className="btn btn-warning"
+                                >
+                                    Update
+                                    </button>
+                            </td>
                             <td className="align-middle">
                                 <button 
                                 onClick={() => handleDelete(restaurant.id)}

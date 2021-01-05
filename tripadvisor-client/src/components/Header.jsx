@@ -33,7 +33,11 @@ const Header = () => {
                                    Things to do
                                  </a>
                              </th>
-                             <th><b>Restaurants</b></th>
+                             <th>
+                                 <a href="/">
+                                   <b>Restaurants</b>
+                                 </a>
+                            </th>
                              <th>
                                  <a 
                                     href="https://www.tripadvisor.com/Flights-g60745-Boston_Massachusetts-Cheap_Discount_Airfares.html">
