@@ -20,8 +20,9 @@ const RestaurantList = (props) => {
        fetchData();
     }, []);
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (e,id) => {
         try {
+            e.stopPropagation();
             const response = await RestaurantFinder.delete(`/${id}`);
             setRestaurants(restaurants.filter(restaurant => {
                 return restaurant.id !== id
@@ -31,9 +32,13 @@ const RestaurantList = (props) => {
         }catch(err){ console.log(err); }
 
     };
-    const handleUpdate = async (id) => {
+    const handleUpdate = async (e,id) => {
+        e.stopPropagation();
         history.push(`/restaurants/${id}/update`);
        
+    }
+    const handleRestaurantSelect = (id) => {
+        history.push(`/restaurants/${id}`);
     }
     return (
         <div className="list-group">
@@ -51,14 +56,14 @@ const RestaurantList = (props) => {
                 <tbody>
                     {restaurants && restaurants.map((restaurant) => {
                         return (
-                        <tr key={restaurant.id}>
+                        <tr onClick={() => handleRestaurantSelect(restaurant.id)} key={restaurant.id}>
                             <td className="align-middle">{restaurant.name}</td>
                             <td className="align-middle">{restaurant.location}</td>
                             <td className="align-middle">{"$".repeat(restaurant.price_range)}</td>
                             <td className="align-middle">reviews</td>
                             <td className="align-middle">
                                 <button
-                                onClick={() => handleUpdate(restaurant.id)} 
+                                onClick={(e) => handleUpdate(e,restaurant.id)} 
                                 className="btn btn-warning"
                                 >
                                     Update
@@ -66,7 +71,7 @@ const RestaurantList = (props) => {
                             </td>
                             <td className="align-middle">
                                 <button 
-                                onClick={() => handleDelete(restaurant.id)}
+                                onClick={(e) => handleDelete(e,restaurant.id)}
                                 className="btn btn-warning"
                                 >
                                     Delete
@@ -76,18 +81,6 @@ const RestaurantList = (props) => {
                         );  
                     } 
                 )}
-                    {/* <tr>
-                        <td>McDonalds</td>
-                        <td>Boston</td>
-                        <td>$$</td>
-                        <td>Rating</td>
-                        <td>
-                            <button className="btn btn-warning">Update</button>
-                        </td>
-                        <td>
-                            <button className="btn btn-danger">Delete</button>
-                        </td>
-                    </tr> */}
                 </tbody>
             </table>
         </div>
