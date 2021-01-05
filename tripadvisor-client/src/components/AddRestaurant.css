@@ -1,0 +1,17 @@
+.btn {
+    width:80px;
+    margin-left: 20px;
+    background-color:#00aa6c;
+    color:white;
+    font-weight: bold;
+    outline: 0;
+    border-color:#00aa6c;    
+}
+.btn:hover {
+    background-color: #229954 ;
+    border-color: #229954;
+}
+.mb-3 {
+    margin-left: 250px;
+    margin-top: 50px;
+}

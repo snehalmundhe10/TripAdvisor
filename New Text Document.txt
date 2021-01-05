@@ -48,3 +48,9 @@ Whenever you are using async await, you need to wrap it in try catch block
 You should not use template string in db.query because it will make you vulnerable to 
 sql injection attacks, so it is not recommended to use any kind of string interpolation
 or template literals within your query. Instead we can use the parameterized query.
+
+Context API- We need to store the results in the context api, the benefit of storing the data
+in the context api instead of in a local state is that all of the components in our application
+can automatically retrieve that data so we dont have to worry about passing the data as props
+or lifting state or doing anything because every component has access to the context api,
+we are using the context api to store the list of restaurants in our application

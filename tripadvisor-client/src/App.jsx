@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './routes/Home';
 import RestaurantDetailPage from './routes/RestaurantDetailPage';
 import UpdatePage from './routes/UpdatePage';
+import './App.css';
+import { RestaurantsContextProvider } from './context/RestaurantsContext';
 
 const App =  () => {
-    return (
-      <div>
+   
+return (
+    <RestaurantsContextProvider>
+      <div className="container">
           <Router>
             <Switch>
                 <Route exact path="/" component={Home}/>
@@ -14,11 +18,9 @@ const App =  () => {
                 <Route exact path="/restaurants/:id" component={RestaurantDetailPage}/>
             </Switch>
           </Router>
-        
-
-
       </div>
-    );
+    </RestaurantsContextProvider>
+  );
 }
 
 export default App;
