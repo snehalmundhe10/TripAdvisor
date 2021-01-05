@@ -1,10 +1,11 @@
 import React, {useState,useContext, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import RestaurantFinder from '../apis/RestaurantFinder';
 import { RestaurantsContext } from '../context/RestaurantsContext';
 
 const UpdateRestaurant = (props) => {
     const { id }  = useParams();
+    let history = useHistory();
     const { restaurants} = useContext(RestaurantsContext);
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
@@ -20,6 +21,17 @@ const UpdateRestaurant = (props) => {
         };
         fetchData();
     },[]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const updatedRestaurant =  await RestaurantFinder.put(`/${id}`,{
+            name: name,
+            location: location,
+            price_range: priceRange
+        });
+       history.push("/");
+
+    }
     return (
         <div>
             <form action="">
@@ -53,7 +65,13 @@ const UpdateRestaurant = (props) => {
                     type="number"
                     />
                 </div>
-                <button type="submit" className="btn btn-dark">Edit</button>
+                <button 
+                    onClick={handleSubmit}
+                    type="submit" 
+                    className="btn btn-dark"
+                >
+                Edit
+                </button>
             </form>
         </div>
     )
