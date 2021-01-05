@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react'
 import RestaurantFinder from "../apis/RestaurantFinder"
 import { RestaurantsContext } from '../context/RestaurantsContext'
+import "./RestaurantList.css";
 
 
 const RestaurantList = (props) => {
@@ -17,9 +18,9 @@ const RestaurantList = (props) => {
     }, [])
     return (
         <div className="list-group">
-            <table className="table table-hover table-dark">
+            <table className="table table-hover table-striped">
                 <thead>
-                    <tr className="bg-primary">
+                    <tr className="bg-dark">
                         <th scope="col">Restaurant</th>
                         <th scope="col">Location</th>
                         <th scope="col">Price Range</th>
@@ -29,7 +30,20 @@ const RestaurantList = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    {restaurants && restaurants.map((restaurant) => {
+                        return (
+                        <tr key={restaurant.id}>
+                            <td className="align-middle">{restaurant.name}</td>
+                            <td className="align-middle">{restaurant.location}</td>
+                            <td className="align-middle">{"$".repeat(restaurant.price_range)}</td>
+                            <td className="align-middle">reviews</td>
+                            <td className="align-middle"><button className="btn btn-success btn-sm">Update</button></td>
+                            <td className="align-middle"><button className="btn btn-danger btn-sm">Delete</button></td>
+                        </tr>
+                        );  
+                    } 
+                )}
+                    {/* <tr>
                         <td>McDonalds</td>
                         <td>Boston</td>
                         <td>$$</td>
@@ -40,7 +54,7 @@ const RestaurantList = (props) => {
                         <td>
                             <button className="btn btn-danger">Delete</button>
                         </td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
         </div>

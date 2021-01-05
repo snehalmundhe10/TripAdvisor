@@ -1,4 +1,4 @@
-.btn {
+.row > .btn {
     width:80px;
     margin-left: 20px;
     background-color:#00aa6c;
@@ -7,7 +7,7 @@
     outline: 0;
     border-color:#00aa6c;    
 }
-.btn:hover {
+.row > .btn:hover {
     background-color: #229954 ;
     border-color: #229954;
 }
