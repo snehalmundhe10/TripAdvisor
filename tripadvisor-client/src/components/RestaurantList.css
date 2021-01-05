@@ -5,6 +5,11 @@ table {
     margin-top: 30px;
 }
 table > tbody > tr {
-    height: 120px;
-    
+    height: 120px;  
+}
+table > tbody > tr > td > .btn {
+    border-radius: 50px;
+    width: 90px;
+    font-weight: 500;
+    font-size:14px;
 }
