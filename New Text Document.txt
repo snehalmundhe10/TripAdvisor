@@ -66,3 +66,7 @@ run again, so when we remove this dependency array from useEffect, it will
 run every time when the everytime when the component re-renders, 
 this behavior we dont want because that will lead to the loop. useEffect should run only
 when we mount the component not when we render the component.
+
+we use axios to send request to the backend, we get/ fetch the data from backend but now 
+this fetched data should be stored somewhere in order to use it by all the components
+We store the data fetched from the axios to the context api
