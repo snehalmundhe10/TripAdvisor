@@ -10,7 +10,8 @@ const StarRating = ({ rating }) => {
             stars.push(<i key={i} className="fas fa-star-half-alt"></i>)
         } 
         else {
-            stars.push(<i key={i} className="far fa-star"></i>)
+            stars.push(<i key={i} className="far fa-star"></i>);
+            
         }
   }
     return (

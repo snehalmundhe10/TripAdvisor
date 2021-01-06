@@ -47,12 +47,14 @@ const RestaurantList = (props) => {
                 <span className="text-warning">0 reviews</span>
             );
         }
-     return(  
-        <>   
+        else {
+          return(  
+           <>   
             <StarRating rating={restaurant.id}/>
             <span className="text-dark ml-1">({restaurant.count})</span>
-        </>
-          );
+          </>
+        );
+    }
     }
     return (
         <div className="list-group">
@@ -74,7 +76,7 @@ const RestaurantList = (props) => {
                             <td className="align-middle">{restaurant.name}</td>
                             <td className="align-middle">{restaurant.location}</td>
                             <td className="align-middle">{"$".repeat(restaurant.price_range)}</td>
-                            <td className="align-middle" id="stars">{renderRating(restaurant)}</td>
+                            <td className="align-middle">{renderRating(restaurant)}</td>
                             <td className="align-middle">
                                 <button
                                 onClick={(e) => handleUpdate(e,restaurant.id)} 

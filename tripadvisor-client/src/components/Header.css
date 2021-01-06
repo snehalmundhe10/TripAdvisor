@@ -52,3 +52,14 @@
 .header__logo > table > thead {
     background-color: white;
 }
+.header__logo > nav {
+   margin-top: 32px;
+   height: 40px;
+   border-top: 1px solid black;
+   border-bottom: 1px solid black;
+   font-size: 14px;
+   background-color:gray;
+}
+.header__logo > nav >  .container-fluid > .navbar-brand {
+    font-size: 16px;
+}

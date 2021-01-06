@@ -19,9 +19,7 @@ app.get("/api/v1/restaurants", async (req,res) => {
     try {
         // const results = await db.query("SELECT * FROM restaurants");
         const restaurantRatingsData = 
-        await db.query("select * from restaurants left join(select restaurant_id, count(*), trunc(avg(rating), 1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;");
-        // console.log("results", results);
-        console.log("restaurant data", restaurantRatingsData);
+        await db.query("select * from restaurants left join(select restaurant_id, COUNT(*), TRUNC(AVG(rating), 1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;");
         res.status(200).json({
             status: "success",
             results: restaurantRatingsData.rows.length,
@@ -39,9 +37,9 @@ app.get("/api/v1/restaurants", async (req,res) => {
 app.get("/api/v1/restaurants/:id", async (req,res) => {
     try {
         const restaurant = 
-                await db.query("select * from restaurants left join(select restaurant_id, count(*), trunc(avg(rating), 1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id where id = $1;", [req.params.id]);
+                await db.query("select * from restaurants left join(select restaurant_id, COUNT(*), TRUNC(AVG(rating), 1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id where id = $1", [req.params.id]);
         const reviews = 
-                await db.query("SELECT * FROM reviews WHERE restaurant_id = $1", [req.params.id])          
+                await db.query("SELECT * FROM reviews WHERE restaurant_id = $1", [req.params.id]) ;         
         res.status(200).json({
             status: "success",
             data: {
@@ -79,10 +77,9 @@ app.post("/api/v1/restaurants/", async (req,res) => {
 app.put("/api/v1/restaurants/:id", async (req,res) => {
     try {
         const results = 
-            await db.query("UPDATE restaurants SET name = $1, location = $2, price_range = $3 where id = $4 returning *"
+            await db.query("UPDATE restaurants SET name = $1, location = $2, price_range = $3 where id = $4 returning *;"
         , [req.body.name, req.body.location, req.body.price_range, req.params.id]);
         
-        console.log(results);
         res.status(201).json({
             status: "success",
             data:{
@@ -101,12 +98,12 @@ app.put("/api/v1/restaurants/:id", async (req,res) => {
 app.delete("/api/v1/restaurants/:id", async (req,res) => {
     try {
         const results = 
-            await db.query(" DELETE FROM restaurants where id = $1", [req.params.id]);
+            await db.query("DELETE FROM restaurants where id = $1", [req.params.id]);
         res.status(204).json({
                 status: "success"
             });    
     }
-    catch {
+    catch(err) {
         console.log(err);
     }
 
@@ -115,7 +112,7 @@ app.delete("/api/v1/restaurants/:id", async (req,res) => {
 app.post("/api/v1/restaurants/:id/addReview", async (req,res) =>{
     try {
         const newReviews = 
-            await db.query("INSERT INTO reviews (restaurant_id, name, review, rating) values($1, $2, $3, $4) returning *;",
+            await db.query("INSERT INTO reviews (restaurant_id, name, review, rating) values($1, $2, $3, $4) returning *",
             [req.params.id, req.body.name, req.body.review, req.body.rating]);
         
         res.status(201).json({

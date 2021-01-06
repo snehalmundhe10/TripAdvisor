@@ -16,7 +16,7 @@ const Header = () => {
                  </h3>
                 
                 
-                 <table className="table table-light">
+                 {/* <table className="table table-light">
                      <thead>
                          <tr>
                              <th>
@@ -71,20 +71,67 @@ const Header = () => {
                              <th></th><th></th><th></th><th></th>
                          </tr>
                      </thead>
-                 </table>
-            </div>
+                 </table> */}
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+              <div className="container-fluid">
+                <a className="navbar-brand" href="https://www.tripadvisor.com/Tourism-g60745-Boston_Massachusetts-Vacations.html">
+                   Boston
+                </a>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" 
+                                        href="https://www.tripadvisor.com/Hotels-g60745-Boston_Massachusetts-Hotels.html">
+                              Hotels
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link"
+                                 href="https://www.tripadvisor.com/Attractions-g60745-Activities-c26-Boston_Massachusetts.html">
+                                Shopping
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" 
+                                href="https://www.tripadvisor.com/Attractions-g60745-Activities-Boston_Massachusetts.html">
+                             Things To do
+                            </a>
+                        </li>
+                       <li className="nav-item">
+                           <a className="nav-link" href="https://www.tripadvisor.com/Flights-g60745-Boston_Massachusetts-Cheap_Discount_Airfares.html">
+                            Flights 
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="https://www.tripadvisor.com/Vacation_Packages-g60745-Boston_Massachusetts-Vacations.html">
+                                Vacation Packages
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="https://www.tripadvisor.com/CruiseDestination-g153339-Canada">
+                                Cruises
+                            </a>
+                        </li>  
+                     </ul>
+                   </div>
+              </div>
+           </nav>
+       </div>
             <br/><br/>
-            <div className="header__title2">
-                <h4 className="font-weight-light display-9 text-center">
+        <div className="header__title2">
+            <h4 className="font-weight-light display-9 text-center">
                     Restaurants in Boston
-                </h4>
-            </div>
-            <div className="header__hr">
-                <hr/>
-                    <p>Your first-hand experiences really help other travelers. Thanks!</p>
-                 <hr/>
-            </div>
+            </h4>
         </div>
+        <div className="header__hr">
+          <hr/>
+            <p>Your first-hand experiences really help other travelers. Thanks!</p>
+          <hr/>
+       </div>
+   </div>
     )
 }
 
