@@ -15,3 +15,9 @@
     margin-left: 250px;
     margin-top: 50px;
 }
+.mb-3  > form >.row > .col-auto > select {
+    width: 150px;
+    height: 32px;
+    border: 1px solid gray;
+    margin-bottom: 7px;
+} 
