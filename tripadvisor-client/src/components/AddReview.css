@@ -1,0 +1,44 @@
+.mb-2 {
+    margin-top: 30px;
+}
+
+.mb-2 > form > .form-row {
+    margin-top: 80px;
+}
+.mb-2 > form > .form-row > h5 {
+    margin-bottom: 30px;
+}
+.mb-2 > form > .form-row > hr {
+    margin-top: -20px;
+    width: 15%;
+    margin-left: -20px;
+}
+.mb-2 > form > .form-row >.form-group > input {
+    margin-top: 5px;
+    width: 80%;
+}
+.mb-2 > form > .form-row >.form-group > select {
+    margin-top: 30px;
+    width: 60%;
+    height: 30px;
+    margin-left: 10px;
+}
+.mb-2 > form >.form-group > label {
+    margin-top: 30px;
+    margin-bottom: 5px;
+} 
+.mb-2 > form >.form-group > textarea {
+    width: 55%;
+    height: 120px;
+} 
+.mb-2 > form > button {
+    margin-top: 20px;
+    width: 100px;
+    background-color: #00aa6c;
+    outline: 0;
+    border-color:#00aa6c;   
+}
+.mb-2 > form > button:hover {
+    background-color: #229954 ;
+    border-color: #229954;
+}    

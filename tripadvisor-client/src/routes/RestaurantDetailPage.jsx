@@ -2,6 +2,7 @@ import React,{useContext, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import RestaurantFinder from '../apis/RestaurantFinder';
 import AddReview from '../components/AddReview';
+import Header from '../components/Header';
 import Reviews from '../components/Reviews';
 import StarRating from '../components/StarRating';
 import { RestaurantsContext } from '../context/RestaurantsContext';
@@ -20,12 +21,13 @@ const RestaurantDetailPage = () => {
     }, []);
     return (
         <div>
+             <Header/>
            {selectedRestaurant && (
             <>
-                <h3 className="text-center display-6">{selectedRestaurant.restaurant.name}</h3>
+                <h4 className="text-center display-8">{selectedRestaurant.restaurant.name}</h4>
                 <div className="text-center">
                     <StarRating rating={selectedRestaurant.restaurant.average_rating}/>
-                    <span className="text-warning ml-1">
+                    <span className="text-dark ml-1" style={{marginLeft: "5px"}}>
                         {selectedRestaurant.restaurant.count ? `(${selectedRestaurant.restaurant.count})` : "(0)"}
                     </span>
                 </div>

@@ -5,13 +5,17 @@ const Header = () => {
     return (
         <div>
             <div className="header__logo">
-                <img 
+               <a href="/"> <img 
                 src="https://www.edigitalagency.com.au/wp-content/uploads/tripadvisor-logo-circle-owl-icon-black-green-858x858.png"
                 alt="tripadvisor"
                 />
+                </a>
+              
                  <h3 className="font-weight-light display-7 text-left">
                     TripAdvisor
                  </h3>
+                
+                
                  <table className="table table-light">
                      <thead>
                          <tr>

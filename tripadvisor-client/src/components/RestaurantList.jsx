@@ -50,7 +50,7 @@ const RestaurantList = (props) => {
      return(  
         <>   
             <StarRating rating={restaurant.id}/>
-            <span className="text-warning ml-1">({restaurant.count})</span>
+            <span className="text-dark ml-1">({restaurant.count})</span>
         </>
           );
     }
@@ -74,7 +74,7 @@ const RestaurantList = (props) => {
                             <td className="align-middle">{restaurant.name}</td>
                             <td className="align-middle">{restaurant.location}</td>
                             <td className="align-middle">{"$".repeat(restaurant.price_range)}</td>
-                            <td className="align-middle">{renderRating(restaurant)}</td>
+                            <td className="align-middle" id="stars">{renderRating(restaurant)}</td>
                             <td className="align-middle">
                                 <button
                                 onClick={(e) => handleUpdate(e,restaurant.id)} 

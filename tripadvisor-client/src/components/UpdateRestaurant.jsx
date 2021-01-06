@@ -2,6 +2,8 @@ import React, {useState,useContext, useEffect} from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import RestaurantFinder from '../apis/RestaurantFinder';
 import { RestaurantsContext } from '../context/RestaurantsContext';
+import Header from './Header';
+import "./UpdateRestaurant.css";
 
 const UpdateRestaurant = (props) => {
     const { id }  = useParams();
@@ -34,10 +36,11 @@ const UpdateRestaurant = (props) => {
 
     }
     return (
-        <div>
+        <div className="container">
+              <h5 className="text-center">Update Restaurant</h5>
             <form action="">
                 <div className="form-group">
-                    <label htmlFor="name"> Name </label>
+                    <label htmlFor="name"> Name : </label>
                     <input 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -47,7 +50,7 @@ const UpdateRestaurant = (props) => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="location"> Location </label>
+                    <label htmlFor="location"> Location : </label>
                     <input 
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
@@ -57,7 +60,7 @@ const UpdateRestaurant = (props) => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="price_range"> Price Range </label>
+                    <label htmlFor="price_range"> Price Range : </label>
                     <input 
                     value={priceRange}
                     onChange={(e) => setPriceRange(e.target.value)}
@@ -69,7 +72,7 @@ const UpdateRestaurant = (props) => {
                 <button 
                     onClick={handleSubmit}
                     type="submit" 
-                    className="btn btn-dark"
+                    className="btn btn-success"
                 >
                 Edit
                 </button>

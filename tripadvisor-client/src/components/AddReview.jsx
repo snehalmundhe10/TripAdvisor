@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import RestaurantFinder from '../apis/RestaurantFinder';
 import {useHistory, useLocation, useParams} from "react-router-dom"
+import "./AddReview.css";
 
 const AddReview = () => {
     const { id } = useParams();
@@ -30,8 +31,10 @@ const AddReview = () => {
         <div className="mb-2">
             <form action="">
                 <div className="form-row">
+                <h5>Add Review</h5>
+                <hr/>
                     <div className="form-group col-8">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name">Name :</label>
                         <input 
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -42,7 +45,7 @@ const AddReview = () => {
                         />
                     </div>
                     <div className="form-group col-4">
-                        <label htmlFor="rating">Rating</label>
+                        <label htmlFor="rating">Rating :</label>
                         <select
                             value={rating} 
                             onChange={(e) => setRating(e.target.value)}
@@ -59,7 +62,7 @@ const AddReview = () => {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="Review">Review</label>
+                    <label htmlFor="Review"> Write Review :</label>
                     <textarea 
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}

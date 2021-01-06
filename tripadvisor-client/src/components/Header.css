@@ -1,3 +1,6 @@
+.header__logo {
+    margin-top: -45px;
+}
 .header__logo > h3 {
     margin-top: -55px;
     margin-left: 90px;
@@ -5,7 +8,7 @@
 .header__title2 > h4 {
     margin-top: -15px;
 }
-.header__logo > img{
+.header__logo > a > img{
   width: 70px;
   height: 70px;
   margin-left: 15px;

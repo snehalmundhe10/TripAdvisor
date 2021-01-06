@@ -1,5 +1,4 @@
-.row > .card{
-    margin-left: -50px;
-    justify-content: space-between;
-
+.row{
+    display: flex;
+    margin-top:30px;
 }
