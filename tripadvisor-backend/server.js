@@ -1,12 +1,11 @@
 require('dotenv').config();
-// import express
+
 const express = require("express");
 const db = require("./db");
 const morgan = require("morgan");
 const cors = require("cors");
 
 
-// initalize the express app
 const app = express();
 app.use(cors());
 
@@ -17,7 +16,7 @@ app.use(express.json());
 // Get all restaurants
 app.get("/api/v1/restaurants", async (req,res) => {
     try {
-        // const results = await db.query("SELECT * FROM restaurants");
+       
         const restaurantRatingsData = 
         await db.query("select * from restaurants left join(select restaurant_id, COUNT(*), TRUNC(AVG(rating), 1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;");
         res.status(200).json({
